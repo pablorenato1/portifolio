@@ -1,7 +1,4 @@
-// Projects data
-// import projectsData from '../projects/projects.json';
-const projectsData = fetch('../../projects/projects.json');
-console.log(projectsData)
+
 
 // Areas mapping
 const AREAS = {
@@ -10,7 +7,11 @@ const AREAS = {
 };
 
 // Function to generate project cards
-function generateProjectCards() {
+async function generateProjectCards() {
+
+    // Projects data
+    const response = await fetch('https://raw.githubusercontent.com/pablorenato1/portifolio/main/projects/projects.json');
+    const projectsData = await response.json()
     // Convert projects to array and sort from most recent to least recent
     const projects = Object.entries(projectsData)
         .map(([key, project]) => ({ ...project, id: key }))

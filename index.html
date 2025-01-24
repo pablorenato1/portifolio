@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>Your Name</h1>
+            <h1>Páblo Renato</h1>
             <nav class="toggle-nav">
                 <button class="toggle-btn active" data-section="developer">Developer</button>
                 <button class="toggle-btn" data-section="data-analyst">Data Analyst</button>
@@ -27,13 +27,12 @@
                             <ul>
                                 <li>Python</li>
                                 <li>JavaScript</li>
-                                <li>Java</li>
+                                
                             </ul>
                         </div>
                         <div class="skill-card">
                             <h3>Frameworks</h3>
                             <ul>
-                                <li>React</li>
                                 <li>Node.js</li>
                                 <li>Django</li>
                             </ul>
@@ -42,8 +41,8 @@
                             <h3>Tools</h3>
                             <ul>
                                 <li>Git</li>
-                                <li>Docker</li>
                                 <li>VS Code</li>
+                                <li>AWS</li>
                             </ul>
                         </div>
                     </div>
@@ -52,8 +51,8 @@
                     <div class="projects-grid developer-projects">
                         <div class="project-card" data-project="developer-project1">
                             <div class="project-card-inner">
-                                <h3>Web Application</h3>
-                                <p>Full-stack project using React and Node.js</p>
+                                <h3>WhatsApp Transcription</h3>
+                                <p>A automation to transcribe WhatsApp Audio using AWS</p>
                                 <div class="project-card-overlay">
                                     <span>View Details</span>
                                 </div>
@@ -68,6 +67,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </section>
@@ -174,6 +174,15 @@
             </section>
         </main>
 
+        <div id="project-details-popup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <!-- <span id="close-project-popup" class="close-button">&times;</span> -->
+                <div id="project-details-content">
+                    <!-- Project details will be loaded here -->
+                </div>
+            </div>
+        </div>
+
         <footer>
             <div class="contact-info">
                 <p>Email: your.email@example.com</p>
@@ -208,10 +217,49 @@
         projectCards.forEach(card => {
             card.addEventListener('click', () => {
                 const projectId = card.getAttribute('data-project');
-                // Open the project details in a new window/iframe
-                window.open(`${projectId}-details.html`, '_blank');
+                
+                // Open project details in a popup
+                openProjectPopup(projectId);
             });
         });
+
+        function openProjectPopup(projectId) {
+            // Assuming you have a popup/modal element with an ID 'project-details-popup'
+            const popup = document.getElementById('project-details-popup');
+            
+            // Assuming you have a content area inside the popup with an ID 'project-details-content'
+            const popupContent = document.getElementById('project-details-content');
+            
+            // Load the specific project details HTML
+            fetch(`projects/${projectId}-details.html`)
+                .then(response => response.text())
+                .then(html => {
+                    popupContent.innerHTML = html;
+                    
+                    // Show the popup
+                    popup.style.display = 'block';
+                    
+                    // Prevent body scrolling
+                    document.body.classList.add('popup-open');
+                })
+                .catch(error => {
+                    console.error('Error loading project details:', error);
+                    // Optional: Show an error message in the popup
+                    popupContent.innerHTML = '<p>Error loading project details.</p>';
+                    popup.style.display = 'flex';
+                    document.body.classList.add('popup-open');
+                });
+        }
+
+        // Optional: Add a close button functionality for the popup
+        const closePopupButton = document.getElementById('close-project-popup');
+        if (closePopupButton) {
+            closePopupButton.addEventListener('click', () => {
+                const popup = document.getElementById('project-details-popup');
+                popup.style.display = 'none';
+                document.body.classList.remove('popup-open');
+            });
+        }
     </script>
 </body>
 </html>

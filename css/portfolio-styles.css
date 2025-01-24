@@ -258,3 +258,47 @@ footer {
         margin-bottom: 1rem;
     }
 }
+
+/* Pop Up */
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex; /* Changed from 'none' to 'flex' */
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    z-index: 1000;
+    padding-top: 50px;
+}
+
+.popup-content {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    max-height: 80vh;
+    width: auto; /* Allows content to determine width */
+    overflow-y: auto;
+    position: relative;
+    margin: 0 auto; /* Additional horizontal centering */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Prevent body scrolling when popup is open */
+body.popup-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}

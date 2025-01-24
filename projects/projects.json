@@ -1,0 +1,21 @@
+{
+    "project1": {
+      "title": "WhatsApp Transcription",
+      "description": "An automation to transcribe WhatsApp Audio using AWS.",
+      "area": 0,
+      "html-file": "developer-project1-details"
+    },
+    "project2": {
+      "title": "Panel: Tribunal de Contas de Pernambuco",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "area": 1,
+      "html-file": "data-analyst-project1-details"
+    },
+    "project3": {
+      "title": "Scientific Research Internship",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "area": 1,
+      "html-file": "data-analyst-project1-details"
+    }
+  }
+  

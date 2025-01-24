@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Professional Portfolio</title>
+    <link rel="stylesheet" href="css/portfolio-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your Name</h1>
+            <nav class="toggle-nav">
+                <button class="toggle-btn active" data-section="developer">Developer</button>
+                <button class="toggle-btn" data-section="data-analyst">Data Analyst</button>
+                <button class="toggle-btn" data-section="projects">All Projects</button>
+            </nav>
+        </header>
+
+        <main>
+            <section id="developer" class="section active">
+                <div class="content">
+                    <h2>Developer Expertise</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Programming Languages</h3>
+                            <ul>
+                                <li>Python</li>
+                                <li>JavaScript</li>
+                                <li>Java</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Frameworks</h3>
+                            <ul>
+                                <li>React</li>
+                                <li>Node.js</li>
+                                <li>Django</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Tools</h3>
+                            <ul>
+                                <li>Git</li>
+                                <li>Docker</li>
+                                <li>VS Code</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2 class="projects-section-title">Developer Projects</h2>
+                    <div class="projects-grid developer-projects">
+                        <div class="project-card" data-project="developer-project1">
+                            <div class="project-card-inner">
+                                <h3>Web Application</h3>
+                                <p>Full-stack project using React and Node.js</p>
+                                <div class="project-card-overlay">
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card" data-project="developer-project2">
+                            <div class="project-card-inner">
+                                <h3>Mobile App</h3>
+                                <p>Cross-platform mobile application</p>
+                                <div class="project-card-overlay">
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="data-analyst" class="section">
+                <div class="content">
+                    <h2>Data Analyst Expertise</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Programming Languages</h3>
+                            <ul>
+                                <li>Python</li>
+                                <li>R</li>
+                                <li>SQL</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Data Tools</h3>
+                            <ul>
+                                <li>Pandas</li>
+                                <li>NumPy</li>
+                                <li>Matplotlib</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Visualization</h3>
+                            <ul>
+                                <li>Tableau</li>
+                                <li>Power BI</li>
+                                <li>Seaborn</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2 class="projects-section-title">Data Analyst Projects</h2>
+                    <div class="projects-grid data-analyst-projects">
+                        <div class="project-card" data-project="data-analyst-project1">
+                            <div class="project-card-inner">
+                                <h3>Market Analysis</h3>
+                                <p>Comprehensive market trend research</p>
+                                <div class="project-card-overlay">
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card" data-project="data-analyst-project2">
+                            <div class="project-card-inner">
+                                <h3>Predictive Modeling</h3>
+                                <p>Machine learning prediction project</p>
+                                <div class="project-card-overlay">
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section">
+                <div class="content">
+                    <h2>All Projects</h2>
+                    <div class="projects-grid all-projects">
+                        <!-- Developer Projects -->
+                        <div class="project-card" data-project="developer-project1">
+                            <div class="project-card-inner">
+                                <h3>Web Application</h3>
+                                <p>Full-stack project using React and Node.js</p>
+                                <div class="project-card-overlay">
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card" data-project="developer-project2">
+                            <div class="project-card-inner">
+                                <h3>Mobile App</h3>
+                                <p>Cross-platform mobile application</p>
+                                <div class="project-card-overlay">
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Data Analyst Projects -->
+                        <div class="project-card" data-project="data-analyst-project1">
+                            <div class="project-card-inner">
+                                <h3>Market Analysis</h3>
+                                <p>Comprehensive market trend research</p>
+                                <div class="project-card-overlay">
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card" data-project="data-analyst-project2">
+                            <div class="project-card-inner">
+                                <h3>Predictive Modeling</h3>
+                                <p>Machine learning prediction project</p>
+                                <div class="project-card-overlay">
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="contact-info">
+                <p>Email: your.email@example.com</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">LinkedIn</a>
+                    <a href="#" class="social-icon">GitHub</a>
+                    <a href="#" class="social-icon">Portfolio</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle between sections
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        const sections = document.querySelectorAll('.section');
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and sections
+                toggleButtons.forEach(btn => btn.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding section
+                button.classList.add('active');
+                document.getElementById(button.dataset.section).classList.add('active');
+            });
+        });
+
+        // Project Card Click Handler
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const projectId = card.getAttribute('data-project');
+                // Open the project details in a new window/iframe
+                window.open(`${projectId}-details.html`, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

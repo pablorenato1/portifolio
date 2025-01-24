@@ -50,24 +50,6 @@
 
                     <h2 class="projects-section-title">Developer Projects</h2>
                     <div class="projects-grid developer-projects">
-                        <!-- <div class="project-card" data-project="developer-project1">
-                            <div class="project-card-inner">
-                                <h3>WhatsApp Transcription</h3>
-                                <p>A automation to transcribe WhatsApp Audio using AWS</p>
-                                <div class="project-card-overlay">
-                                    <span>View Details</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-card" data-project="developer-project2">
-                            <div class="project-card-inner">
-                                <h3>Mobile App</h3>
-                                <p>Cross-platform mobile application</p>
-                                <div class="project-card-overlay">
-                                    <span>View Details</span>
-                                </div>
-                            </div>
-                        </div> -->
                         
                     </div>
                 </div>
@@ -105,25 +87,7 @@
 
                     <h2 class="projects-section-title">Data Analyst Projects</h2>
                     <div class="projects-grid data-analyst-projects">
-                        <!-- <div class="project-card" data-project="data-analyst-project1">
-                            <div class="project-card-inner">
-                                <h3>Market Analysis</h3>
-                                <p>Comprehensive market trend research</p>
-                                <div class="project-card-overlay">
-                                    <span>View Details</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-card" data-project="data-analyst-project2">
-                            <div class="project-card-inner">
-                                <h3>Predictive Modeling</h3>
-                                <p>Machine learning prediction project</p>
-                                <div class="project-card-overlay">
-                                    <span>View Details</span>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
+                       </div>
                 </div>
             </section>
 
@@ -131,45 +95,7 @@
                 <div class="content">
                     <h2>All Projects</h2>
                     <div class="projects-grid all-projects">
-                        <!-- Developer Projects -->
-                        <!-- <div class="project-card" data-project="developer-project1">
-                            <div class="project-card-inner">
-                                <h3>Web Application</h3>
-                                <p>Full-stack project using React and Node.js</p>
-                                <div class="project-card-overlay">
-                                    <span>View Details</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-card" data-project="developer-project2">
-                            <div class="project-card-inner">
-                                <h3>Mobile App</h3>
-                                <p>Cross-platform mobile application</p>
-                                <div class="project-card-overlay">
-                                    <span>View Details</span>
-                                </div>
-                            </div>
-                        </div> -->
-                        
-                        <!-- Data Analyst Projects -->
-                        <!-- <div class="project-card" data-project="data-analyst-project1">
-                            <div class="project-card-inner">
-                                <h3>Market Analysis</h3>
-                                <p>Comprehensive market trend research</p>
-                                <div class="project-card-overlay">
-                                    <span>View Details</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-card" data-project="data-analyst-project2">
-                            <div class="project-card-inner">
-                                <h3>Predictive Modeling</h3>
-                                <p>Machine learning prediction project</p>
-                                <div class="project-card-overlay">
-                                    <span>View Details</span>
-                                </div>
-                            </div>
-                        </div> -->
+                      
                     </div>
                 </div>
             </section>
@@ -214,23 +140,6 @@
             });
         });
 
-        // // Project Card Click Handler
-        // const projectCards = document.querySelectorAll('.project-card');
-        // projectCards.forEach(card => {
-        //     card.addEventListener('click', () => {
-        //         const projectId = card.getAttribute('data-project');
-                
-        //         // Open project details in a popup
-        //         openProjectPopup(projectId);
-        //     });
-        // });
-
-
-        // Create the cards for the developer and analyst section
-        function createCards() {
-
-        }
-
         function openProjectPopup(projectId) {
             // Assuming you have a popup/modal element with an ID 'project-details-popup'
             const popup = document.getElementById('project-details-popup');
@@ -239,7 +148,7 @@
             const popupContent = document.getElementById('project-details-content');
             
             // Load the specific project details HTML
-            fetch(`projects/${projectId}-details.html`)
+            fetch(`projects/${projectId}.html`)
                 .then(response => response.text())
                 .then(html => {
                     popupContent.innerHTML = html;

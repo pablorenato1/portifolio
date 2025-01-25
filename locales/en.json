@@ -1,0 +1,21 @@
+{
+    "nav": {
+        "data-analyst": "Data Analyst",
+        "developer": "Developer",
+        "projects": "All Projects"
+    },
+    "sections": {
+        "data-analyst-expertise": "Data Analyst Expertise",
+        "developer-expertise": "Developer Expertise",
+        "data-analyst-projects": "Data Analyst Projects",
+        "developer-projects": "Developer Projects",
+        "all-projects": "All Projects"
+    },
+    "skills": {
+        "programming-languages": "Programming Languages",
+        "data-tools": "Data Tools",
+        "visualization": "Visualization",
+        "frameworks": "Frameworks",
+        "tools": "Tools"
+    }
+}

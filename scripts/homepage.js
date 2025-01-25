@@ -1,5 +1,4 @@
 
-
 // Areas mapping
 const AREAS = {
     0: 'developer',
@@ -72,3 +71,53 @@ function createProjectCard(project) {
 
 // Call the function when the page loads
 document.addEventListener('DOMContentLoaded', generateProjectCards);
+
+ // Toggle between sections
+ const toggleButtons = document.querySelectorAll('.toggle-btn');
+ const sections = document.querySelectorAll('.section');
+
+ toggleButtons.forEach(button => {
+     button.addEventListener('click', () => {
+         // Remove active class from all buttons and sections
+         toggleButtons.forEach(btn => btn.classList.remove('active'));
+         sections.forEach(section => section.classList.remove('active'));
+
+         // Add active class to clicked button and corresponding section
+         button.classList.add('active');
+         document.getElementById(button.dataset.section).classList.add('active');
+     });
+ });
+
+ function openProjectPopup(projectId) {
+     // Assuming you have a popup/modal element with an ID 'project-details-popup'
+     const popup = document.getElementById('project-details-popup');
+     
+     // Assuming you have a content area inside the popup with an ID 'project-details-content'
+     const popupContent = document.getElementById('project-details-content');
+     
+     // Load the specific project details HTML
+     fetch(`projects/${projectId}.html`)
+         .then(response => response.text())
+         .then(html => {
+             popupContent.innerHTML = html;
+             
+             // Show the popup
+             popup.style.display = 'block';
+             
+             // Prevent body scrolling
+             document.body.classList.add('popup-open');
+         })
+         .catch(error => {
+             console.error('Error loading project details:', error);
+             // Optional: Show an error message in the popup
+             popupContent.innerHTML = '<p>Error loading project details.</p>';
+             popup.style.display = 'flex';
+             document.body.classList.add('popup-open');
+         });
+ }
+
+ function setDisplayToNone() {
+     const popup = document.getElementById('project-details-popup');
+     popup.style.display = 'none'
+     document.body.classList.remove('popup-open');
+ }

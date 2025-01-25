@@ -7,7 +7,7 @@ const translations = {
 // Load language files
 async function loadLanguage(lang) {
     if (!translations[lang]) {
-        const response = await fetch(`locales/${lang}.json`);
+        const response = await fetch(`https://raw.githubusercontent.com/pablorenato1/portifolio/main/locales/${lang}.json`);
         translations[lang] = await response.json();
     }
     return translations[lang];
@@ -46,22 +46,17 @@ async function setLanguage(lang) {
 
 // Language switcher setup
 document.addEventListener('DOMContentLoaded', () => {
-    // Add language switcher to header
-    const header = document.querySelector('header');
-    const languageSwitcher = document.createElement('div');
-    languageSwitcher.innerHTML = `
-        <div class="language-switcher">
-            <button id="lang-en">🇺🇸 EN</button>
-            <button id="lang-pt">🇧🇷 PT</button>
-        </div>
-    `;
-    header.appendChild(languageSwitcher);
 
-    // Add event listeners
-    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
-    document.getElementById('lang-pt').addEventListener('click', () => setLanguage('pt'));
+    // Language select event listener
+    const languageSelect = document.getElementById('language-select');
+    languageSelect.addEventListener('change', (e) => {
+        setLanguage(e.target.value);
+    });
 
     // Load default/saved language
     const savedLanguage = localStorage.getItem('portfolio-language') || 'en';
+    languageSelect.value = savedLanguage;
     setLanguage(savedLanguage);
 });
+
+// Rest of the existing language.js code remains the same

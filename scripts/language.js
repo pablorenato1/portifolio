@@ -37,8 +37,9 @@ async function setLanguage(lang) {
     skillHeaders[0].textContent = languageData.skills["programming-languages"];
     skillHeaders[1].textContent = languageData.skills["data-tools"];
     skillHeaders[2].textContent = languageData.skills["visualization"];
-    if (skillHeaders[3]) skillHeaders[3].textContent = languageData.skills["frameworks"];
-    if (skillHeaders[4]) skillHeaders[4].textContent = languageData.skills["tools"];
+    if (skillHeaders[3]) skillHeaders[3].textContent = languageData.skills["programming-languages"];
+    if (skillHeaders[4]) skillHeaders[4].textContent = languageData.skills["frameworks"];
+    if (skillHeaders[5]) skillHeaders[5].textContent = languageData.skills["tools"];
 
     // Store current language in localStorage
     localStorage.setItem('portfolio-language', lang);

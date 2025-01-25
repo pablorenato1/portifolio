@@ -13,14 +13,49 @@
         <header>
             <h1>Páblo Renato</h1>
             <nav class="toggle-nav">
-                <button class="toggle-btn active" data-section="developer">Developer</button>
-                <button class="toggle-btn" data-section="data-analyst">Data Analyst</button>
+                <button class="toggle-btn active" data-section="data-analyst">Data Analyst</button>
+                <button class="toggle-btn" data-section="developer">Developer</button>
                 <button class="toggle-btn" data-section="projects">All Projects</button>
             </nav>
         </header>
 
         <main>
-            <section id="developer" class="section active">
+            <section id="data-analyst" class="section active">
+                <div class="content">
+                    <h2>Data Analyst Expertise</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Programming Languages</h3>
+                            <ul>
+                                <li>Python</li>
+                                <li>R</li>
+                                <li>SQL</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Data Tools</h3>
+                            <ul>
+                                <li>Pandas</li>
+                                <li>NumPy</li>
+                                <li>Scikit-learn</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Visualization</h3>
+                            <ul>
+                                <li>Looker Studio</li>
+                                <li>GoogleSheets/Excel</li>
+                                <li>Power BI</li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <h2 class="projects-section-title">Data Analyst Projects</h2>
+                    <div class="projects-grid data-analyst-projects">
+                       </div>
+                </div>
+            </section>
+            <section id="developer" class="section">
                 <div class="content">
                     <h2>Developer Expertise</h2>
                     <div class="skills-grid">
@@ -29,7 +64,7 @@
                             <ul>
                                 <li>Python</li>
                                 <li>JavaScript</li>
-                                
+                                <li>C#</li>
                             </ul>
                         </div>
                         <div class="skill-card">
@@ -56,41 +91,6 @@
                 </div>
             </section>
 
-            <section id="data-analyst" class="section">
-                <div class="content">
-                    <h2>Data Analyst Expertise</h2>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <h3>Programming Languages</h3>
-                            <ul>
-                                <li>Python</li>
-                                <li>R</li>
-                                <li>SQL</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h3>Data Tools</h3>
-                            <ul>
-                                <li>Pandas</li>
-                                <li>NumPy</li>
-                                <li>Matplotlib</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h3>Visualization</h3>
-                            <ul>
-                                <li>Tableau</li>
-                                <li>Power BI</li>
-                                <li>Seaborn</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <h2 class="projects-section-title">Data Analyst Projects</h2>
-                    <div class="projects-grid data-analyst-projects">
-                       </div>
-                </div>
-            </section>
 
             <section id="projects" class="section">
                 <div class="content">
@@ -169,14 +169,10 @@
                 });
         }
 
-        // Optional: Add a close button functionality for the popup
-        const closePopupButton = document.getElementById('close-project-popup');
-        if (closePopupButton) {
-            closePopupButton.addEventListener('click', () => {
-                const popup = document.getElementById('project-details-popup');
-                popup.style.display = 'none';
-                document.body.classList.remove('popup-open');
-            });
+        function setDisplayToNone() {
+            console.log("test")
+            const popup = document.getElementById('project-details-popup');
+            popup.style.display = 'none'
         }
     </script>
 </body>

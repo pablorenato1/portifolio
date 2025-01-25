@@ -163,3 +163,9 @@ h2 {
         align-items: center;
     }
 }
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin; /* Thin scrollbar */
+    scrollbar-color: var(--accent-color) var(--bg-primary); /* thumb and track color */
+}

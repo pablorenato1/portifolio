@@ -170,9 +170,9 @@
         }
 
         function setDisplayToNone() {
-            console.log("test")
             const popup = document.getElementById('project-details-popup');
             popup.style.display = 'none'
+            document.body.classList.remove('popup-open');
         }
     </script>
 </body>

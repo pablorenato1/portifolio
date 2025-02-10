@@ -9,6 +9,7 @@ async function loadLanguage(lang) {
     if (!translations[lang]) {
         const response = await fetch(`https://raw.githubusercontent.com/pablorenato1/portifolio/main/locales/${lang}.json`);
         translations[lang] = await response.json();
+
     }
     return translations[lang];
 }
@@ -16,6 +17,7 @@ async function loadLanguage(lang) {
 // Apply translations
 async function setLanguage(lang) {
     const languageData = await loadLanguage(lang);
+    document.documentElement.lang = lang;
     
     // Update navigation buttons
     document.querySelector('[data-section="data-analyst"]').textContent = languageData.nav["data-analyst"];

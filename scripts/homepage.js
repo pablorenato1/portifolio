@@ -118,6 +118,13 @@ document.addEventListener('DOMContentLoaded', generateProjectCards);
 
  function setDisplayToNone() {
      const popup = document.getElementById('project-details-popup');
+     const main_popup_body = document.getElementById('project-details-container');
      popup.style.display = 'none'
      document.body.classList.remove('popup-open');
+
+     if (main_popup_body) {
+        while (main_popup_body.firstChild) {
+            main_popup_body.removeChild(main_popup_body.firstChild);
+        }
+     }
  }

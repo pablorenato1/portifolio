@@ -1,0 +1,182 @@
+{
+    "projects": {
+      "data-analyst": [
+        {
+          "id": "1",
+          "content": {
+            "en": {
+              "title": "Scientific Research Internship",
+              "subtitle": "Full-stack Development",
+              "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+              "sections": [
+                {
+                  "type": "paragraph",
+                  "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                },
+                {
+                  "type": "image",
+                  "url": "path/to/image.jpg",
+                  "caption": "Platform Overview"
+                }
+              ],
+              "tools": ["Pandas", "Python", "Aprendizado de Máquina", "Jupyter"],
+              "links": {
+                "github": "https://github.com/username/project2"
+              }
+            },
+            "pt": {
+              "title": "Dashboard de Análise de Vendas",
+              "subtitle": "Projeto de Visualização de Dados",
+              "description": "Dashboard interativo analisando performance de vendas por região",
+              "sections": [
+                {
+                  "type": "paragraph",
+                  "content": "Criei um dashboard interativo usando Power BI para analisar dados de vendas..."
+                },
+                {
+                  "type": "video",
+                  "embedUrl": "https://www.youtube.com/embed/example1",
+                  "caption": "Demonstração do Dashboard"
+                },
+                {
+                  "type": "list",
+                  "title": "Principais Recursos",
+                  "items": [
+                    "Acompanhamento de vendas em tempo real",
+                    "Comparação de performance regional",
+                    "Análise de tendências"
+                  ]
+                }
+              ],
+              "tools": ["Power BI", "SQL", "Excel"],
+              "links": {
+                "github": "https://github.com/username/project1",
+                "live": "https://example.com/dashboard"
+              }
+            }
+          }
+        },
+        {
+          "id": "3",
+          "content": {
+            "en": {
+              "title": "Panel:",
+              "subtitle": "Data Visualization Project",
+              "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+              "sections": [
+                {
+                  "type": "paragraph",
+                  "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                },
+                {
+                  "type": "video",
+                  "embedUrl": "https://www.youtube.com/embed/example1",
+                  "caption": "Dashboard Demo"
+                },
+                {
+                  "type": "list",
+                  "title": "Key Features",
+                  "items": [
+                    "Real-time sales tracking",
+                    "Regional performance comparison",
+                    "Trend analysis"
+                  ]
+                }
+              ],
+              "tools": ["Power BI", "SQL", "Excel"],
+              "links": {
+                "github": "https://github.com/username/project1",
+                "live": "https://example.com/dashboard"
+              }
+            },
+            "pt": {
+              "title": "Dashboard de Análise de Vendas",
+              "subtitle": "Projeto de Visualização de Dados",
+              "description": "Dashboard interativo analisando performance de vendas por região",
+              "sections": [
+                {
+                  "type": "paragraph",
+                  "content": "Criei um dashboard interativo usando Power BI para analisar dados de vendas..."
+                },
+                {
+                  "type": "video",
+                  "embedUrl": "https://www.youtube.com/embed/example1",
+                  "caption": "Demonstração do Dashboard"
+                },
+                {
+                  "type": "list",
+                  "title": "Principais Recursos",
+                  "items": [
+                    "Acompanhamento de vendas em tempo real",
+                    "Comparação de performance regional",
+                    "Análise de tendências"
+                  ]
+                }
+              ],
+              "tools": ["Power BI", "SQL", "Excel"],
+              "links": {
+                "github": "https://github.com/username/project1",
+                "live": "https://example.com/dashboard"
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "id": "2",
+          "content": {
+            "en": {
+              "title": "WhatsApp Transcription",
+              "subtitle": "Data Visualization Project",
+              "description": "An automation to transcribe WhatsApp Audio using AWS.",
+              "sections": [
+                {
+                  "type": "paragraph",
+                  "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                },
+                {
+                  "type": "video",
+                  "embedUrl": "https://www.youtube.com/embed/example1",
+                  "caption": "Dashboard Demo"
+                },
+                {
+                  "type": "list",
+                  "title": "Key Features",
+                  "items": [
+                    "Transcription of WhatsApp Audio",
+                    "Long Audios to text"
+                  ]
+                }
+              ],
+              "tools": ["AWS", "NodeJS", "JavaScript", "API", "Google API"],
+              "links": {
+                "github": "https://github.com/username/project1",
+                "live": "https://example.com/dashboard"
+              }
+            },
+            "pt": {
+              "title": "Plataforma E-commerce",
+              "subtitle": "Desenvolvimento Full-stack",
+              "description": "Plataforma moderna de e-commerce construída com React e Node.js",
+              "sections": [
+                {
+                  "type": "paragraph",
+                  "content": "Desenvolvi uma plataforma completa de e-commerce..."
+                },
+                {
+                  "type": "image",
+                  "url": "path/to/image.jpg",
+                  "caption": "Visão Geral da Plataforma"
+                }
+              ],
+              "tools": ["React", "Node.js", "MongoDB"],
+              "links": {
+                "github": "https://github.com/username/project2"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }

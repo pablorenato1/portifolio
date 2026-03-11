@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adventure Works — Full Pipeline | Pablo Renato</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <style>
+        /* ── Page-specific styles ── */
+        .project-hero {
+            padding: 9rem 0 4rem;
+        }
+
+        .project-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .project-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-hero h1 .dim {
+            color: var(--muted);
+        }
+
+        .project-hero .lead {
+            font-size: 1.05rem;
+            color: var(--muted2);
+            line-height: 1.75;
+            max-width: 640px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ── Architecture diagram ── */
+        .arch-section {
+            padding: 4rem 0;
+        }
+
+        .arch-flow {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            overflow-x: auto;
+            padding: 2rem 0;
+            scrollbar-width: thin;
+        }
+
+        .arch-step {
+            flex-shrink: 0;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.4rem 1.6rem;
+            min-width: 140px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .arch-step:hover {
+            border-color: var(--accent2);
+        }
+
+        .arch-step-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .arch-step-label {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .arch-step-tool {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .arch-arrow {
+            flex-shrink: 0;
+            font-family: var(--mono);
+            font-size: 1rem;
+            color: var(--accent);
+            padding: 0 0.6rem;
+            opacity: 0.6;
+        }
+
+        /* ── Sections ── */
+        .content-section {
+            padding: 3.5rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .content-section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .content-section h2 .num {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Stack grid ── */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stack-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .stack-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .stack-card-icon {
+            font-size: 1.3rem;
+        }
+
+        .stack-card-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .stack-card-role {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* ── DAG table ── */
+        .dag-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+        }
+
+        .dag-table th {
+            text-align: left;
+            padding: 0.7rem 1rem;
+            color: var(--muted);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dag-table td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .dag-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .dag-table tr:hover td {
+            background: rgba(0, 255, 157, 0.03);
+        }
+
+        .dag-name {
+            color: var(--accent);
+        }
+
+        /* ── Layers ── */
+        .layers-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .layer-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.1rem 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .layer-row:hover {
+            border-color: var(--border2);
+        }
+
+        .layer-name {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            min-width: 70px;
+            text-transform: uppercase;
+        }
+
+        .layer-desc {
+            font-size: 0.88rem;
+            color: var(--muted2);
+            flex: 1;
+        }
+
+        /* ── Models grid ── */
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .model-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.4rem;
+            transition: border-color 0.2s;
+        }
+
+        .model-card:hover {
+            border-color: var(--accent2);
+        }
+
+        .model-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.7rem;
+        }
+
+        .model-card h3 {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            color: var(--accent2);
+            font-weight: 600;
+        }
+
+        .model-card p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ── BI link card ── */
+        .bi-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .bi-card-left h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .bi-card-left p {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            .arch-flow {
+                gap: 0;
+            }
+
+            .arch-arrow {
+                padding: 0 0.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="../../index.html" class="nav-logo"><span>~/</span>pablorenato</a>
+        <ul class="nav-links">
+            <li><a href="../../index.html#sobre">sobre</a></li>
+            <li><a href="../../index.html#projetos">projetos</a></li>
+            <li><a href="../../index.html#contato">contato</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="project-hero fade-up">
+            <a href="../../index.html#projetos" class="back-link">voltar para projetos</a>
+
+            <div class="project-meta-bar">
+                <span class="badge badge-done">concluído</span>
+                <span class="tag">Pipeline</span>
+                <span class="tag tag-purple">BI</span>
+                <span class="tag">Engenharia</span>
+            </div>
+
+            <h1>Adventure Works<br><span class="dim">Full Pipeline</span></h1>
+
+            <p class="lead">
+                Pipeline de dados end-to-end usando a base de dados Adventure Works — da extração via Meltano,
+                orquestração com Airflow, transformação com dbt, armazenamento no Databricks, até o dashboard final no
+                Power BI.
+            </p>
+
+            <div class="hero-actions">
+                <a href="https://github.com/pablorenato1/data-pipelines-adventureworks" target="_blank"
+                    class="btn btn-primary">
+                    ver repositório
+                </a>
+            </div>
+        </section>
+
+        <!-- ARCHITECTURE FLOW -->
+        <section class="arch-section fade-up delay-1">
+            <div class="section-label">// arquitetura</div>
+            <h2 class="section-title">Fluxo do Pipeline</h2>
+
+            <div class="arch-flow">
+                <div class="arch-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/microsoft-sql-server-logo.svg" alt="MSSQL">
+                    </span>
+                    <span class="arch-step-label">Fonte</span>
+                    <span class="arch-step-tool">MSSQL / API</span>
+                </div>
+                <span class="arch-arrow">──▶</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/meltano.png" alt="Meltano">
+                    </span>
+                    <span class="arch-step-label">Extração</span>
+                    <span class="arch-step-tool">Meltano</span>
+                </div>
+                <span class="arch-arrow">──▶</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/airflow-logo.svg" alt="Airflow">
+                    </span>
+                    <span class="arch-step-label">Orquestração</span>
+                    <span class="arch-step-tool">Airflow</span>
+                </div>
+                <span class="arch-arrow">──▶</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/Dbt-Icon--Streamline-Svg-Logos.svg" alt="dbt">
+                    </span>
+                    <span class="arch-step-label">Transformação</span>
+                    <span class="arch-step-tool">dbt</span>
+                </div>
+                <span class="arch-arrow">──▶</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/azure-databricks.svg" alt="Databricks">
+                    </span>
+                    <span class="arch-step-label">Armazenamento</span>
+                    <span class="arch-step-tool">Databricks</span>
+                </div>
+                <span class="arch-arrow">──▶</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/Microsoft-Power-Bi--Streamline-Svg-Logos.svg" alt="Power BI">
+                    </span>
+                    <span class="arch-step-label">Visualização</span>
+                    <span class="arch-step-tool">Power BI</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK -->
+        <section class="content-section fade-up delay-2">
+            <h2><span class="num">// 01</span> Stack Utilizada</h2>
+            <div class="stack-grid">
+                <div class="stack-card">
+                    <span class="stack-card-icon">
+                        <img src="../../assets/icons/meltano.png" alt="Meltano">
+                    </span>
+                    <span class="stack-card-name">Meltano</span>
+                    <span class="stack-card-role">Extração & Carga (EL)</span>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-card-icon">
+                        <img src="../../assets/icons/airflow-logo.svg" alt="Airflow">
+                    </span>
+                    <span class="stack-card-name">Airflow</span>
+                    <span class="stack-card-role">Orquestração de DAGs</span>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-card-icon">
+                        <img src="../../assets/icons/Docker-Icon--Streamline-Svg-Logos.svg" alt="Docker">
+                    </span>
+                    <span class="stack-card-name">Docker</span>
+                    <span class="stack-card-role">Containerização</span>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-card-icon">
+                        <img src="../../assets/icons/python-logo.png" alt="Python">
+                    </span>
+                    <span class="stack-card-name">Python</span>
+                    <span class="stack-card-role">Scripts & Automação</span>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-card-icon">
+                        <img src="../../assets/icons/Dbt-Icon--Streamline-Svg-Logos.svg" alt="dbt">
+                    </span>
+                    <span class="stack-card-name">dbt</span>
+                    <span class="stack-card-role">Transformação SQL</span>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-card-icon">
+                        <img src="../../assets/icons/azure-databricks.svg" alt="Databricks">
+                    </span>
+                    <span class="stack-card-name">Databricks</span>
+                    <span class="stack-card-role">Armazenamento & Lakehouse</span>
+                </div>
+                <div class="stack-card">
+                    <span class="stack-card-icon">
+                        <img src="../../assets/icons/Microsoft-Power-Bi--Streamline-Svg-Logos.svg" alt="Power BI">
+                    </span>
+                    <span class="stack-card-name">Power BI</span>
+                    <span class="stack-card-role">Dashboards & Relatórios</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAGs -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 02</span> DAGs do Airflow</h2>
+            <table class="dag-table">
+                <thead>
+                    <tr>
+                        <th>DAG</th>
+                        <th>Descrição</th>
+                        <th>Schedule</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="dag-name">meltano_extraction_separated_tasks_dag</td>
+                        <td>Extrai dados da API e do MSSQL via Meltano e carrega na camada Raw do Databricks</td>
+                        <td>@daily</td>
+                    </tr>
+                    <tr>
+                        <td class="dag-name">dbt_build_dag</td>
+                        <td>Executa os modelos de transformação dbt e aplica testes de qualidade de dados</td>
+                        <td>@daily</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- CAMADAS -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 03</span> Camadas no Databricks</h2>
+            <div class="layers-stack">
+                <div class="layer-row">
+                    <span class="layer-name">Raw</span>
+                    <span class="layer-desc">Dados brutos ingeridos diretamente pelo Meltano, sem transformações.</span>
+                </div>
+                <div class="layer-row">
+                    <span class="layer-name">Staging</span>
+                    <span class="layer-desc">Dados limpos, tipados e padronizados. Transformações básicas aplicadas via dbt.</span>
+                </div>
+                <div class="layer-row">
+                    <span class="layer-name">Intermediate</span>
+                    <span class="layer-desc">Aplicação de regras de negócios mais robustas nos dados.</span>
+                </div>
+                <div class="layer-row">
+                    <span class="layer-name">Marts</span>
+                    <span class="layer-desc">Modelos analíticos prontos para consumo — fatos e dimensões otimizados para Power BI.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODELOS dbt -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 04</span> Modelos dbt (Gold)</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <h3>fact_sales_orders</h3>
+                        <span class="tag">Fato</span>
+                    </div>
+                    <p>Modelo central de pedidos de venda. Integra dimensões de cliente, produto, endereço, promoções e
+                        taxas de câmbio para análise transacional completa.</p>
+                </div>
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <h3>fact_promotions_usage</h3>
+                        <span class="tag">Fato</span>
+                    </div>
+                    <p>Rastreia a efetividade de campanhas promocionais, conectando ofertas, produtos, clientes e tempo
+                        para insights de performance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BI -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 05</span> Dashboard Power BI</h2>
+            <div class="bi-card">
+                <div class="bi-card-left">
+                    <h3>Adventure Works — Dashboard de Vendas</h3>
+                    <p>Dashboard analítico conectado ao Databricks Gold layer, com métricas de vendas, desempenho de
+                        produtos e análise de campanhas.</p>
+                </div>
+                <a href="https://github.com/pablorenato1/data-pipelines-adventureworks" target="_blank"
+                    class="btn btn-outline">
+                    ver no repositório
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <span>~/projetos/adventure-works</span>
+        <span>pablo renato © 2025</span>
+    </footer>
+
+</body>
+
+</html>

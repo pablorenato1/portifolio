@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TCE-PE — BI TEA | Pablo Renato</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <style>
+        /* ── Page-specific styles ── */
+        .project-hero {
+            padding: 9rem 0 4rem;
+        }
+
+        .project-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .project-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-hero h1 .dim {
+            color: var(--muted);
+        }
+
+        .project-hero .lead {
+            font-size: 1.05rem;
+            color: var(--muted2);
+            line-height: 1.75;
+            max-width: 640px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ── Context box ── */
+        .context-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent2);
+            border-radius: 4px;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 2rem;
+            font-size: 0.88rem;
+            color: var(--muted2);
+            line-height: 1.7;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            box-sizing: border-box;
+        }
+
+        .context-box strong {
+            color: var(--text);
+        }
+
+        /* ── Content sections ── */
+        .content-section {
+            padding: 3.5rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .content-section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .content-section h2 .num {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Year cards ── */
+        .year-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .year-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+
+        .year-card:hover {
+            border-color: var(--accent2);
+            transform: translateY(-3px);
+        }
+
+        .year-card-header {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .year-label {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--accent2);
+        }
+
+        .year-card-body {
+            padding: 1.4rem 1.5rem;
+        }
+
+        .year-card-body p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 1.2rem;
+        }
+
+        .year-card-actions {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+        }
+
+        /* ── Role breakdown ── */
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .role-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.3rem;
+            transition: border-color 0.2s;
+        }
+
+        .role-item:hover {
+            border-color: var(--border2);
+        }
+
+        .role-item-top {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .role-item-icon {
+            font-size: 1.1rem;
+        }
+
+        .role-item-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .role-item-desc {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* Highlight mine vs team */
+        .role-item.mine {
+            border-left: 3px solid var(--accent);
+        }
+
+        .role-item.team {
+            border-left: 3px solid var(--border2);
+            opacity: 0.7;
+        }
+
+        .role-legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+        }
+
+        .role-legend span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .dot-green {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 1px;
+        }
+
+        .dot-gray {
+            width: 8px;
+            height: 8px;
+            background: var(--border2);
+            border-radius: 1px;
+        }
+
+        /* ── Stack ── */
+        .stack-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .stack-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.7rem 1.1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .stack-pill:hover {
+            border-color: var(--accent2);
+            transform: translateY(-2px);
+        }
+
+        .stack-pill span {
+            font-size: 1.1rem;
+        }
+
+        /* ── TEA info card ── */
+        .info-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.8rem;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--muted2);
+            line-height: 1.75;
+        }
+
+        .info-card p+p {
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .year-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .back-link::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="../../index.html" class="nav-logo"><span>~/</span>pablorenato</a>
+        <ul class="nav-links">
+            <li><a href="../../index.html#sobre">sobre</a></li>
+            <li><a href="../../index.html#projetos">projetos</a></li>
+            <li><a href="../../index.html#contato">contato</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="project-hero fade-up">
+            <a href="../../index.html#projetos" class="back-link">voltar para projetos</a>
+
+            <div class="project-meta-bar">
+                <span class="badge badge-done">publicado</span>
+                <span class="tag">BI</span>
+                <span class="tag tag-purple">Setor Público</span>
+                <span class="tag">Looker Studio</span>
+            </div>
+
+            <h1>TCE-PE<br><span class="dim">BI sobre TEA — 2024 & 2025</span></h1>
+
+            <p class="lead">
+                Painéis analíticos sobre Transtorno do Espectro Autista (TEA) desenvolvidos para o Tribunal de Contas do
+                Estado de Pernambuco. Projeto de auditoria pública com dados do estado de Pernambuco, publicado
+                oficialmente pelo TCE-PE.
+            </p>
+
+            <div class="hero-actions">
+                <a href="https://lookerstudio.google.com/reporting/8476b339-5d84-4f61-b540-3a7168b033fa/page/p_bele1w71md"
+                    target="_blank" class="btn btn-primary">ver BI 2025</a>
+                <a href="https://lookerstudio.google.com/reporting/5b88a53b-6aa3-4a99-ac25-198c5b6cb6b5/page/p_h1f9rr8gmd"
+                    target="_blank" class="btn btn-outline">ver BI 2024</a>
+            </div>
+        </section>
+
+        <!-- CONTEXT -->
+        <div class="context-box fade-up delay-1">
+            <strong>Contexto do projeto:</strong> A auditoria foi conduzida pelos auditores do Tribunal de Contas do
+            Estado de Pernambuco. Minha atuação esteve concentrada na área de dados, incluindo a organização e o
+            tratamento das bases (quando necessário), a integração das diferentes fontes de informação e a construção do
+            Painel. O estilo visual dos painéis seguiu a identidade institucional do Tribunal. As escolhas de
+            visualização e a estrutura analítica foram definidas por mim em conjunto com os auditores, enquanto os
+            textos e conteúdos descritivos foram elaborados por eles, com supervisão dos superiores.
+        </div>
+
+        <!-- DASHBOARDS POR ANO -->
+        <section class="content-section fade-up delay-2">
+            <h2><span class="num">// 01</span> Dashboards por Edição</h2>
+            <div class="year-cards">
+
+                <div class="year-card">
+                    <div class="year-card-header">
+                        <span class="year-label">2025</span>
+                        <span class="badge badge-done">publicado</span>
+                    </div>
+                    <div class="year-card-body">
+                        <p>
+                            Painel mais recente, com dados atualizados de 2025 sobre diagnósticos, atendimentos e
+                            cobertura de serviços de saúde relacionados ao TEA em Pernambuco.
+                        </p>
+                        <div class="year-card-actions">
+                            <a href="https://lookerstudio.google.com/reporting/8476b339-5d84-4f61-b540-3a7168b033fa/page/p_bele1w71md"
+                                target="_blank" class="btn btn-primary">
+                                acessar dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="year-card">
+                    <div class="year-card-header">
+                        <span class="year-label">2024</span>
+                        <span class="badge badge-done">publicado</span>
+                    </div>
+                    <div class="year-card-body">
+                        <p>
+                            Edição inicial do painel, base da auditoria de 2024. Estrutura analítica que orientou as
+                            conclusões da equipe de auditores sobre a política pública de TEA.
+                        </p>
+                        <div class="year-card-actions">
+                            <a href="https://lookerstudio.google.com/reporting/5b88a53b-6aa3-4a99-ac25-198c5b6cb6b5/page/p_h1f9rr8gmd"
+                                target="_blank" class="btn btn-outline">
+                                acessar dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MINHA ATUAÇÃO -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 02</span> Minha Atuação no Projeto</h2>
+            <div class="role-legend">
+                <span><span class="dot-green"></span>feito por mim</span>
+                <span><span class="dot-gray"></span>pelo tribunal</span>
+            </div>
+            <div class="role-grid">
+                <div class="role-item mine">
+                    <div class="role-item-top">
+                        <span class="role-item-icon">🗄️</span>
+                        <span class="role-item-label">Organização dos dados</span>
+                    </div>
+                    <p class="role-item-desc">Estruturação e tratamento das bases de dados utilizadas nos painéis.</p>
+                </div>
+                <div class="role-item mine">
+                    <div class="role-item-top">
+                        <span class="role-item-icon">🔗</span>
+                        <span class="role-item-label">Conexão de fontes</span>
+                    </div>
+                    <p class="role-item-desc">Integração entre Google Sheets e sistemas internos do TCE-PE com o Looker
+                        Studio.</p>
+                </div>
+                <div class="role-item mine">
+                    <div class="role-item-top">
+                        <span class="role-item-icon">📈</span>
+                        <span class="role-item-label">Escolha de gráficos</span>
+                    </div>
+                    <p class="role-item-desc">Definição dos tipos de visualização mais adequados para cada métrica
+                        analisada.</p>
+                </div>
+                <div class="role-item mine">
+                    <div class="role-item-top">
+                        <span class="role-item-icon">🧩</span>
+                        <span class="role-item-label">Estrutura analítica</span>
+                    </div>
+                    <p class="role-item-desc">Organização dos painéis por páginas e fluxo lógico de navegação.</p>
+                </div>
+                <div class="role-item team">
+                    <div class="role-item-top">
+                        <span class="role-item-icon">🎨</span>
+                        <span class="role-item-label">Estilo visual</span>
+                    </div>
+                    <p class="role-item-desc">Identidade visual e paleta de cores definidas pela equipe do Tribunal.</p>
+                </div>
+                <div class="role-item team">
+                    <div class="role-item-top">
+                        <span class="role-item-icon">🔍</span>
+                        <span class="role-item-label">Auditoria em si</span>
+                    </div>
+                    <p class="role-item-desc">Conduzida pelos auditores do TCE-PE; minha contribuição foi no suporte de
+                        dados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 03</span> Ferramentas Utilizadas</h2>
+            <div class="stack-row">
+                <div class="stack-pill">
+                    <img src="../../assets/icons/ic_looker_studio.svg" alt="Looker Studio"> Looker Studio
+                </div>
+                <div class="stack-pill">
+                    <img src="../../assets/icons/sheets_2020q4_48dp.png" alt="Google Sheets"> Google Sheets
+                </div>
+                <div class="stack-pill">
+                    <span>🏛️</span> Sistema interno TCE-PE
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE TEA -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 04</span> Sobre o Tema</h2>
+            <div class="info-card">
+                <p>
+                    O Transtorno do Espectro Autista (TEA) é uma condição de desenvolvimento neurológico que afeta a
+                    comunicação, o comportamento e a interação social. No Brasil, a Lei 12.764/2012 garante direitos
+                    específicos às pessoas com TEA, incluindo acesso a saúde, educação e assistência social.
+                </p>
+                <p>
+                    Os painéis desenvolvidos para o TCE-PE analisam indicadores da política pública de TEA no estado de
+                    Pernambuco, contribuindo para o controle externo e transparência das ações governamentais voltadas à
+                    população com esse diagnóstico.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <span>~/projetos/tce-pe-tea</span>
+        <span>pablo renato © 2025</span>
+    </footer>
+
+</body>
+
+</html>

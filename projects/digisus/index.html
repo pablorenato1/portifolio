@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digisus PE — Pipeline de Saúde | Pablo Renato</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <style>
+        /* ── Page-specific styles ── */
+        .project-hero {
+            padding: 9rem 0 4rem;
+        }
+
+        .project-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .project-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-hero h1 .dim {
+            color: var(--muted);
+        }
+
+        .project-hero .lead {
+            font-size: 1.05rem;
+            color: var(--muted2);
+            line-height: 1.75;
+            max-width: 640px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ── WIP Banner ── */
+        .wip-banner {
+            background: rgba(245, 166, 35, 0.06);
+            border: 1px solid rgba(245, 166, 35, 0.25);
+            border-radius: 4px;
+            padding: 1.2rem 1.6rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            margin-bottom: 2rem;
+            font-size: 0.88rem;
+            color: #c8870a;
+            line-height: 1.65;
+                        
+            border-left: 3px solid #f1a414;
+            margin-bottom: 2rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            box-sizing: border-box;
+        }
+
+        .wip-banner-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            padding-top: 0.05rem;
+        }
+
+        .wip-banner strong {
+            color: #f5a623;
+        }
+
+        /* ── Content sections ── */
+        .content-section {
+            padding: 3.5rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .content-section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .content-section h2 .num {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Architecture flow ── */
+        .arch-flow {
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            padding: 2rem 0;
+            scrollbar-width: thin;
+            gap: 0;
+        }
+
+        .arch-step {
+            flex-shrink: 0;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.4rem 1.6rem;
+            min-width: 145px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .arch-step:hover {
+            border-color: var(--accent);
+        }
+
+        .arch-step.wip-step {
+            border-style: dashed;
+            opacity: 0.6;
+        }
+
+        .arch-step-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .arch-step-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .arch-step-tool {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .arch-step.wip-step .arch-step-tool {
+            color: var(--muted);
+        }
+
+        .arch-arrow {
+            flex-shrink: 0;
+            font-family: var(--mono);
+            font-size: 1rem;
+            color: var(--accent);
+            padding: 0 0.6rem;
+            opacity: 0.5;
+        }
+
+        .arch-arrow.wip-arrow {
+            color: #f5a623;
+            opacity: 0.4;
+        }
+
+        /* ── Stack ── */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stack-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .stack-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .stack-card-icon {
+            font-size: 1.3rem;
+        }
+
+        .stack-card-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .stack-card-role {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* ── Objectives ── */
+        .objectives-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .objective-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.1rem 1.4rem;
+            font-size: 0.88rem;
+            color: var(--muted2);
+            line-height: 1.6;
+            transition: border-color 0.2s;
+        }
+
+        .objective-item:hover {
+            border-color: var(--border2);
+        }
+
+        .objective-item .obj-num {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            flex-shrink: 0;
+            padding-top: 0.1rem;
+        }
+
+        /* ── About Digisus ── */
+        .info-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.8rem;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--muted2);
+            line-height: 1.75;
+        }
+
+        .info-card p+p {
+            margin-top: 1rem;
+        }
+
+        /* ── Status timeline ── */
+        .status-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .status-item {
+            display: flex;
+            gap: 1.2rem;
+            padding-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .status-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .status-dot-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-top: 0.35rem;
+            flex-shrink: 0;
+        }
+
+        .status-dot.done {
+            background: var(--accent);
+        }
+
+        .status-dot.doing {
+            background: #f5a623;
+            animation: pulse-dot 1.4s infinite;
+        }
+
+        .status-dot.todo {
+            background: var(--border2);
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
+        }
+
+        .status-line {
+            flex: 1;
+            width: 1px;
+            background: var(--border);
+            margin-top: 0.5rem;
+        }
+
+        .status-content {
+            flex: 1;
+        }
+
+        .status-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .status-desc {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="../../index.html" class="nav-logo"><span>~/</span>pablorenato</a>
+        <ul class="nav-links">
+            <li><a href="../../index.html#sobre">sobre</a></li>
+            <li><a href="../../index.html#projetos">projetos</a></li>
+            <li><a href="../../index.html#contato">contato</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="project-hero fade-up">
+            <a href="../../index.html#projetos" class="back-link">voltar para projetos</a>
+
+            <div class="project-meta-bar">
+                <span class="badge badge-wip">em desenvolvimento</span>
+                <span class="tag">Pipeline</span>
+                <span class="tag tag-purple">Saúde Pública</span>
+                <span class="tag">API</span>
+            </div>
+
+            <h1>Digisus PE<br><span class="dim">Dados de Saúde de Pernambuco</span></h1>
+
+            <p class="lead">
+                Extração, tratamento e análise dos dados do sistema Digisus exclusivamente para o estado de Pernambuco.
+                Pipeline em Python conectado ao Databricks, com dashboard em Power BI em desenvolvimento.
+            </p>
+
+            <div class="hero-actions">
+                <a href="https://github.com/pablorenato1/Digisus-pe-api" target="_blank" class="btn btn-primary">
+                    ver repositório
+                </a>
+            </div>
+        </section>
+
+        <!-- WIP BANNER -->
+        <div class="wip-banner fade-up delay-1">
+            <span class="wip-banner-icon">⚠️</span>
+            <div>
+                <strong>Projeto em andamento.</strong> A extração via API e o pipeline de dados já estão funcionais. O
+                dashboard em Power BI está sendo desenvolvido e será adicionado ao repositório assim que concluído.
+            </div>
+        </div>
+
+        <!-- ARCHITECTURE -->
+        <section class="content-section fade-up delay-2">
+            <div class="section-label">// arquitetura</div>
+            <h2 class="section-title">Fluxo do Pipeline</h2>
+
+            <div class="arch-flow">
+                <div class="arch-step">
+                    <span class="arch-step-icon">🌐</span>
+                    <span class="arch-step-label">Fonte</span>
+                    <span class="arch-step-tool">API Digisus</span>
+                </div>
+                <span class="arch-arrow">──▶</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/python-logo.png" alt="Python">
+                    </span>
+                    <span class="arch-step-label">Extração</span>
+                    <span class="arch-step-tool">Python</span>
+                </div>
+                <span class="arch-arrow">──▶</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/python-logo.png" alt="Python">
+                    </span>
+                    <span class="arch-step-label">Tratamento</span>
+                    <span class="arch-step-tool">Python / Pandas</span>
+                </div>
+                <span class="arch-arrow">──▶</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/azure-databricks.svg" alt="Databricks">
+                    </span>
+                    <span class="arch-step-label">Armazenamento</span>
+                    <span class="arch-step-tool">Databricks</span>
+                </div>
+                <span class="arch-arrow wip-arrow">──▶</span>
+                <div class="arch-step wip-step">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/Microsoft-Power-Bi--Streamline-Svg-Logos.svg" alt="Power BI">
+                    </span>
+                    <span class="arch-step-label">Visualização</span>
+                    <span class="arch-step-tool">Power BI (WIP)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 01</span> Stack Utilizada</h2>
+            <div class="stack-grid">
+                <div class="stack-card">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/python-logo.png" alt="Python">
+                    </span>
+                    <span class="stack-card-name">Python</span>
+                    <span class="stack-card-role">Extração & Tratamento</span>
+                </div>
+                <div class="stack-card">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/azure-databricks.svg" alt="Databricks">
+                    </span>
+                    <span class="stack-card-name">Databricks</span>
+                    <span class="stack-card-role">Armazenamento</span>
+                </div>
+                <div class="stack-card">
+                    <span class="arch-step-icon">
+                        <img src="../../assets/icons/Microsoft-Power-Bi--Streamline-Svg-Logos.svg" alt="Power BI">
+                    </span>
+                    <span class="stack-card-name">Power BI</span>
+                    <span class="stack-card-role">Visualização (WIP)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- OBJETIVOS -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 02</span> Objetivos do Projeto</h2>
+            <div class="objectives-list">
+                <div class="objective-item">
+                    <span class="obj-num">01.</span>
+                    <span>Consumir a API do Digisus filtrando exclusivamente os dados do estado de Pernambuco, evitando
+                        o volume desnecessário de dados nacionais.</span>
+                </div>
+                <div class="objective-item">
+                    <span class="obj-num">02.</span>
+                    <span>Estruturar um pipeline de tratamento que padronize, limpe e organize os dados de saúde para
+                        análise.</span>
+                </div>
+                <div class="objective-item">
+                    <span class="obj-num">03.</span>
+                    <span>Armazenar os dados processados no Databricks com estrutura organizada para consultas
+                        analíticas.</span>
+                </div>
+                <div class="objective-item">
+                    <span class="obj-num">04.</span>
+                    <span>Construir um dashboard em Power BI que permita visualizar indicadores de saúde de Pernambuco
+                        de forma clara e acessível.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATUS -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 03</span> Status de Desenvolvimento</h2>
+            <div class="status-list">
+                <div class="status-item">
+                    <div class="status-dot-col">
+                        <div class="status-dot done"></div>
+                        <div class="status-line"></div>
+                    </div>
+                    <div class="status-content">
+                        <div class="status-title">Extração via API</div>
+                        <div class="status-desc">Conexão com a API do Digisus funcionando, com filtro por estado de
+                            Pernambuco.</div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-dot-col">
+                        <div class="status-dot done"></div>
+                        <div class="status-line"></div>
+                    </div>
+                    <div class="status-content">
+                        <div class="status-title">Tratamento de dados</div>
+                        <div class="status-desc">Pipeline de limpeza e padronização dos dados implementado em Python.
+                        </div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-dot-col">
+                        <div class="status-dot done"></div>
+                        <div class="status-line"></div>
+                    </div>
+                    <div class="status-content">
+                        <div class="status-title">Carga no Databricks</div>
+                        <div class="status-desc">Dados armazenados e organizados no Databricks para consumo analítico.
+                        </div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-dot-col">
+                        <div class="status-dot doing"></div>
+                    </div>
+                    <div class="status-content">
+                        <div class="status-title">Dashboard Power BI</div>
+                        <div class="status-desc">Em desenvolvimento. Será publicado no repositório assim que concluído.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE DIGISUS -->
+        <section class="content-section fade-up">
+            <h2><span class="num">// 04</span> Sobre o Digisus</h2>
+            <div class="info-card">
+                <p>
+                    O Digisus é o sistema de gestão do SUS (Sistema Único de Saúde) no Brasil, responsável por
+                    centralizar dados de saúde pública municipal e estadual, incluindo informações sobre atenção básica,
+                    programas de saúde e indicadores de cobertura.
+                </p>
+                <p>
+                    Este projeto foca exclusivamente nos dados de Pernambuco, permitindo uma análise mais detalhada e
+                    contextualizada da situação da saúde pública no estado.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <span>~/projetos/digisus-pe</span>
+        <span>pablo renato © 2025</span>
+    </footer>
+
+</body>
+
+</html>

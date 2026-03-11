@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio — Dark Terminal</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-logo"><span>~/</span>Páblo Renato</div>
+        <ul class="nav-links">
+            <li><a href="#sobre">sobre</a></li>
+            <li><a href="#skills">skills</a></li>
+            <li><a href="#projetos">projetos</a></li>
+            <li><a href="#contato">contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">DATA ENGINEER & ANALYST</div>
+            <h1>Transformando<br><span class="highlight">dados</span> em<br>decisões.</h1>
+            <div class="hero-sub">// pipeline → análise → insight</div>
+            <p>Engenheiro e analista de dados com experiência em construção de pipelines, modelagem e visualização com
+                Power BI e Looker Studio.</p>
+            <div class="hero-cta">
+                <a href="#projetos" class="btn btn-primary">ver projetos</a>
+                <a href="#contato" class="btn btn-outline">entrar em contato</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat"><span class="stat-num">3+</span>
+            <div class="stat-label">PROJETOS</div>
+        </div>
+        <div class="stat"><span class="stat-num">8+</span>
+            <div class="stat-label">TECNOLOGIAS</div>
+        </div>
+        <div class="stat"><span class="stat-num">2+</span>
+            <div class="stat-label">ANOS EXP.</div>
+        </div>
+    </div>
+
+    <section id="skills">
+        <div class="section-label">// 02. tecnologias</div>
+        <h2 class="section-title">Stack & Ferramentas</h2>
+        <div class="skills-grid">
+            <div class="skill-chip"><span class="skill-dot"></span>Python</div>
+            <div class="skill-chip"><span class="skill-dot purple"></span>SQL</div>
+            <div class="skill-chip"><span class="skill-dot"></span>Power BI</div>
+            <div class="skill-chip"><span class="skill-dot purple"></span>Looker Studio</div>
+            <div class="skill-chip"><span class="skill-dot"></span>Apache Spark</div>
+            <div class="skill-chip"><span class="skill-dot"></span>Databricks</div>
+            <div class="skill-chip"><span class="skill-dot purple"></span>dbt</div>
+            <div class="skill-chip"><span class="skill-dot"></span>Airflow</div>
+            <div class="skill-chip"><span class="skill-dot purple"></span>Docker</div>
+            <div class="skill-chip"><span class="skill-dot"></span>Git</div>
+            <div class="skill-chip"><span class="skill-dot purple"></span>Pandas</div>
+        </div>
+    </section>
+
+    <section id="projetos">
+        <div class="section-label">// 03. trabalhos</div>
+        <h2 class="section-title">Projetos</h2>
+        <div class="projects-grid">
+
+            <a href="projects/adventure-works/index.html" class="project-card">
+                <div class="project-card-top">
+                    <span class="project-icon">🔗</span>
+                    <span class="project-tag">PIPELINE + BI</span>
+                </div>
+                <h3>Adventure Works — Full Pipeline</h3>
+                <p>Pipeline end-to-end da extração ao BI: Meltano, Airflow, dbt, Databricks e Power BI.</p>
+                <div class="project-stack">
+                    <span class="stack-item">Meltano</span>
+                    <span class="stack-item">Airflow</span>
+                    <span class="stack-item">dbt</span>
+                    <span class="stack-item">Databricks</span>
+                    <span class="stack-item">Power BI</span>
+                </div>
+            </a>
+
+            <a href="projects/tce-pe/index.html" class="project-card">
+                <div class="project-card-top">
+                    <span class="project-icon">📊</span>
+                    <span class="project-tag">BI</span>
+                </div>
+                <h3>TCE-PE — BI sobre TEA</h3>
+                <p>Painéis analíticos sobre Transtorno do Espectro Autista para o Tribunal de Contas de Pernambuco.</p>
+                <div class="project-stack">
+                    <span class="stack-item">Looker Studio</span>
+                    <span class="stack-item">Google Sheets</span>
+                </div>
+            </a>
+
+            <a href="projects/digisus/index.html" class="project-card">
+                <div class="project-card-top">
+                    <span class="project-icon">🏥</span>
+                    <span class="project-tag">PIPELINE + BI</span>
+                </div>
+                <h3>Digisus PE</h3>
+                <p>Extração e análise dos dados de saúde pública de Pernambuco via API do Digisus.</p>
+                <div class="project-stack">
+                    <span class="stack-item">Python</span>
+                    <span class="stack-item">Databricks</span>
+                    <span class="stack-item">Power BI</span>
+                    <span class="stack-item">dbt</span>
+                    <span class="stack-item">Python</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="contact-box">
+            <div>
+                <div class="section-label">// 04. contato</div>
+                <h2>Vamos conversar?</h2>
+            </div>
+            <div class="contact-links">
+                <a target="_blank" href="https://github.com/pablorenato1" class="contact-link">
+                    <img src="assets/icons/github_logo_icon_229278.svg" alt="GitHub" class="contact-icon">
+                    <div>
+                        <!-- <span class="contact-link-label">GitHub</span> -->
+                        <span class="contact-link-value">pablorenato1</span>
+                    </div>
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/in/pablo-renato/" class="contact-link">
+                    <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="contact-icon">
+                    <div>
+                        <span class="contact-link-value">LinkedIn</span>
+                        <!-- <span class="contact-link-value">pablo-renato</span> -->
+                    </div>
+                </a>
+                <span class="contact-link" onclick="navigator.clipboard.writeText('pablorenato15@gmail.com'); this.querySelector('.contact-link-value').innerText='copiado ✓'; setTimeout(() => this.querySelector('.contact-link-value').innerText='pablorenato15@gmail.com', 2000)">
+                    <span>✉</span>
+                    <div>
+                        <span class="contact-link-label">Email</span>
+                        <span class="contact-link-value">pablorenato15@gmail.com</span>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <footer>built with ♥ — Páblo Renato - Em 2025</footer>
+</body>
+
+</html>
